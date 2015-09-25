@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.menu.MenuView">
+   <menus>
+      <Menu mnemonicParsing="false" text="File">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#newGame" text="New Game" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#exitApplication" text="Exit" />
+         </items>
+      </Menu>
+      <Menu mnemonicParsing="false" text="Options">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#showProgress" text="Show Progress" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <Menu mnemonicParsing="false" text="Change Difficulty">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#changeDifficulty" text="Easy" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeDifficulty" text="Normal" />
+                  <MenuItem mnemonicParsing="false" onAction="#changeDifficulty" text="Hard" />
+              </items>
+            </Menu>
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#pauseGame" text="(un)Pause Game" />
+        </items>
+      </Menu>
+      <Menu mnemonicParsing="false" text="About">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#showHowToPlayDialog" text="How To Play" />
+            <MenuItem mnemonicParsing="false" onAction="#showAboutDialog" text="About" />
+         </items>
+      </Menu>
+   </menus>
+</MenuBar>

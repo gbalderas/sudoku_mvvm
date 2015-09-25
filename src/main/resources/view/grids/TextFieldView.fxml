@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.grids.TextFieldView">
+   <children>
+      <TextField fx:id="textField" alignment="CENTER" onAction="#registerField" onKeyReleased="#keyPressed" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                  <Menu mnemonicParsing="false" text="Mark">
+                     <items>
+                        <CustomMenuItem hideOnClick="false" mnemonicParsing="false" text="Item">
+                           <content>
+                              <VBox spacing="5.0">
+                                 <children>
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="1" />
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="2" />
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="3" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="4" />
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="5" />
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="6" />
+                                       </children>
+                                    </HBox>
+                                    <HBox spacing="5.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="7" />
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="8" />
+                                          <Button mnemonicParsing="false" onAction="#addNumberToMarkedList" text="9" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </CustomMenuItem>
+                     </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="clearMarkedItem" mnemonicParsing="false" onAction="#clearMarkedNumbers" text="Clear Marked Numbers" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="clearFieldItem" mnemonicParsing="false" onAction="#clearField" text="Clear Field" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Label fx:id="label" alignment="TOP_CENTER" cacheShape="false" centerShape="false" contentDisplay="CENTER" disable="true" focusTraversable="false" layoutY="39.0" scaleShape="false" style="-fx-opacity: 1.0;" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" StackPane.alignment="TOP_CENTER" />
+   </children>
+   <padding>
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+   </padding>
+</AnchorPane>

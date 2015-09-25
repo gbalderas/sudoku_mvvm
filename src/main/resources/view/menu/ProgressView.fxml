@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.menu.ProgressView">
+   <children>
+      <HBox fx:id="hbox" alignment="CENTER">
+         <children>
+            <Label text="Uncorrect number of fields / Fields left to fill: " />
+            <Label fx:id="labelFieldsLeft" text="Label" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" spacing="20.0">
+         <children>
+            <ToggleButton fx:id="toggleButtonShowProgress" mnemonicParsing="false" text="Show Progress" />
+            <ProgressIndicator fx:id="progressIndicator" progress="0.0" />
+            <ProgressBar fx:id="progressBar" maxWidth="1.7976931348623157E308" progress="0.0" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

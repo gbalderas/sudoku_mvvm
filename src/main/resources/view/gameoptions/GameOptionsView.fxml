@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.gameoptions.GameOptionsView">
+	<children>
+		<Label text="Time">
+			<font>
+				<Font size="16.0" />
+			</font>
+		</Label>
+		<Label fx:id="labelTimer" text="minutes:seconds.millis" />
+      <Label text="Difficulty:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelDifficulty" text="Normal" />
+		<SplitMenuButton fx:id="splitButtonNewGame" mnemonicParsing="false" onAction="#newGame" popupSide="RIGHT" text="New Game!">
+			<items>
+				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Easy" />
+				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Normal" />
+				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Hard" />
+			</items>
+		</SplitMenuButton>
+		<Button fx:id="buttonPauseGame" mnemonicParsing="false" onAction="#pauseGame" text="Pause Game" />
+		<ToggleButton fx:id="toggleShowHint" mnemonicParsing="false" text="Show Hint" />
+		<ToggleButton fx:id="toggleShowSolution" mnemonicParsing="false" text="Show Solution" />
+	</children>
+</VBox>
