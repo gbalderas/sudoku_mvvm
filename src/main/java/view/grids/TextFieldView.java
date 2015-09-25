@@ -53,7 +53,7 @@ public class TextFieldView implements FxmlView<TextFieldViewModel>, Initializabl
 				int id = GridPane.getRowIndex(parent) * 9 + GridPane.getColumnIndex(parent);
 				MainViewModel.getInstance().id.set(id + "");
 			}
-		}); 
+		});
 	}
 
 	// TEXTFIELD ------

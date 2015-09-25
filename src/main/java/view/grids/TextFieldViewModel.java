@@ -40,9 +40,8 @@ public class TextFieldViewModel implements ViewModel {
 		if (newValue.isEmpty() || newValue.matches("[1-9]") || newValue.equals(" ")) {
 			if (!newValue.equals(oldValue))
 				registerField();
-		} else {
+		} else
 			registeredNumber.set(oldValue);
-		}
 	};
 
 	// CONTEXT MENU ---------------------------------------------------------

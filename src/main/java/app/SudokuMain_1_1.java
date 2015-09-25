@@ -27,9 +27,9 @@ public class SudokuMain_1_1 extends Application {
 		stage.setScene(scene);
 		stage.setMinHeight(700);
 		stage.setMinWidth(700);
-		stage.show(); 
+		stage.show();
 
 		Dialogs.showHowToPlayDialog();
 	}
- 
+
 }
