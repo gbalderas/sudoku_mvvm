@@ -7,12 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.ToggleButton;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+
+import model.Timer;
 
 public class GameOptionsView implements FxmlView<GameOptionsViewModel>, Initializable {
 
@@ -37,6 +41,9 @@ public class GameOptionsView implements FxmlView<GameOptionsViewModel>, Initiali
 	private SplitMenuButton splitButtonNewGame;
 
 	@FXML
+	private CheckMenuItem itemHard, itemEasy, itemNormal;
+
+	@FXML
 	// start timer
 	private void newGame() {
 		viewModel.startNewGame();
@@ -53,16 +60,33 @@ public class GameOptionsView implements FxmlView<GameOptionsViewModel>, Initiali
 
 	@FXML
 	private void setDifficulty(ActionEvent event) {
-		viewModel.changeDifficultyString(event);
+		MenuItem item = (MenuItem) event.getSource();
+		viewModel.setDifficulty(item.getText());
+	}
+
+	@FXML
+	private void setDifficultyCheck(ActionEvent event) {
+		CheckMenuItem item = (CheckMenuItem) event.getSource();
+		// if(itemEasy.isSelected())
+		viewModel.setDifficultyCheck(item.getText());
+		itemEasy.selectedProperty().set(false);
+		itemNormal.selectedProperty().set(false);
+		itemHard.selectedProperty().set(false);
+		item.selectedProperty().set(true);
+
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		labelTimer.textProperty().bindBidirectional(viewModel.timerString);
 		labelDifficulty.textProperty().bindBidirectional(viewModel.difficultyString);
-		buttonPauseGame.textProperty().bindBidirectional(GameOptionsViewModel.getInstance().timer.pauseString);
+		buttonPauseGame.textProperty().bindBidirectional(Timer.pauseString);
+		itemEasy.selectedProperty().bindBidirectional(viewModel.easySelected);
+		itemNormal.selectedProperty().bindBidirectional(viewModel.normalSelected);
+		itemHard.selectedProperty().bindBidirectional(viewModel.hardSelected);
 		toggleShowHint.setVisible(false);
 		toggleShowSolution.setVisible(false);
+
 	}
 
 }

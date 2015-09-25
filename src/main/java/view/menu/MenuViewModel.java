@@ -3,15 +3,17 @@ package view.menu;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
+import javafx.scene.control.MenuItem;
 
 import de.saxsys.mvvmfx.ViewModel;
 
+import model.NewGame;
 import view.Dialogs.Dialogs;
 import view.gameoptions.GameOptionsViewModel;
 
 public class MenuViewModel implements ViewModel {
 
-	// TODO? add check to selected difficulty level
+	// TODO add check to selected difficulty level
 
 	public BooleanProperty selected = new SimpleBooleanProperty();
 
@@ -20,7 +22,7 @@ public class MenuViewModel implements ViewModel {
 	}
 
 	public void newGame() {
-		GameOptionsViewModel.getInstance().startNewGame();
+		NewGame.startNewGame();
 	}
 
 	public void exit() {
@@ -36,11 +38,12 @@ public class MenuViewModel implements ViewModel {
 	}
 
 	public void changeDifficulty(ActionEvent event) {
-		GameOptionsViewModel.getInstance().changeDifficultyString(event);
+		MenuItem item = (MenuItem) event.getSource();
+		GameOptionsViewModel.getInstance().setDifficulty(item.getText());
 	}
 
 	public void pauseGame() {
-		GameOptionsViewModel.getInstance().stopTimer();
+		NewGame.stopTimer();
 	}
 
 	public void showHowToPlay() {

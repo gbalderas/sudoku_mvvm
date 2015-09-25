@@ -8,15 +8,16 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 
 import app.SudokuMain_1_1;
-import view.gameoptions.GameOptionsViewModel;
+import model.NewGame;
+import model.Timer;
 
 public class Dialogs {
 
 	public static void playAgainDialog() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("PUZZLE SOLVED!");
-		alert.setHeaderText("Your time was: " + GameOptionsViewModel.getInstance().getTimerString()
-		        + "\n on Difficulty:" + GameOptionsViewModel.getInstance().getDifficultyString());
+		alert.setHeaderText(
+		        "Your time was: " + Timer.timeCounter.get() + "\n on Difficulty:" + NewGame.difficultyString.get());
 		alert.setContentText("Play Again?");
 
 		ButtonType buttonTypePlayAgain = new ButtonType("Play Again?");
@@ -27,7 +28,7 @@ public class Dialogs {
 		Optional<ButtonType> result = alert.showAndWait();
 
 		if (result.get() == buttonTypePlayAgain)
-			GameOptionsViewModel.getInstance().startNewGame();
+			NewGame.startNewGame();
 		else
 			System.out.println("cancel");
 	}

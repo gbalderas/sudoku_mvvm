@@ -20,6 +20,7 @@ public class ProgressViewModel implements ViewModel {
 	private static ProgressViewModel INSTANCE;
 
 	public ProgressViewModel() {
+		progress.bindBidirectional(CurrentBoard.progress);
 		fieldsLeft.bind(CurrentBoard.numberFieldsLeft.asString());
 		pressedProperty.setValue(false);
 		pressedProperty.addListener((obs, oldV, newV) -> {

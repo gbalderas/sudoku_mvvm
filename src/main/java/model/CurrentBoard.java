@@ -2,28 +2,29 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
 import view.Dialogs.Dialogs;
-import view.gameoptions.GameOptionsViewModel;
-import view.menu.ProgressViewModel;
 
 public class CurrentBoard {
 
 	public static IntegerProperty numberFieldsLeft = new SimpleIntegerProperty();
+	public static DoubleProperty progress = new SimpleDoubleProperty();
 
 	public static ArrayList<Integer> CURRENT = new ArrayList<Integer>();
 	public static ArrayList<Integer> SOLUTION = new ArrayList<Integer>();
+	public static int DIFFICULTY = 50;
 
 	public CurrentBoard() {
-		numberFieldsLeft.set(GameOptionsViewModel.getInstance().DIFFICULTY);
+		numberFieldsLeft.set(DIFFICULTY);
 		createBoards();
 		printBoards();
 		numberFieldsLeft.addListener((obs, oldV, newV) -> {
-			double value = (GameOptionsViewModel.getInstance().DIFFICULTY - newV.doubleValue())
-		            / GameOptionsViewModel.getInstance().DIFFICULTY;
-			ProgressViewModel.getInstance().progress.set(value);
+			double value = (DIFFICULTY - newV.doubleValue()) / DIFFICULTY;
+			progress.set(value);
 		});
 	}
 
@@ -34,9 +35,9 @@ public class CurrentBoard {
 				x--;
 		numberFieldsLeft.setValue(x);
 		if (x == 0) {
-			GameOptionsViewModel.getInstance().timer.stopTime();
-			System.out.println("YOU WON!\nDifficulty: " + GameOptionsViewModel.getInstance().DIFFICULTY
-			        + "\nFinished in: " + GameOptionsViewModel.getInstance().timer.getTimeCounter());
+			NewGame.timer.stopTime();
+			System.out.println(
+			        "YOU WON!\nDifficulty: " + DIFFICULTY + "\nFinished in: " + NewGame.timer.getTimeCounter());
 			Dialogs.playAgainDialog();
 		}
 	}
@@ -46,8 +47,8 @@ public class CurrentBoard {
 		SOLUTION.clear();
 		for (int i = 0; i < 9; i++)
 			for (int j = 0; j < 9; j++) {
-				CURRENT.add(GameOptionsViewModel.getInstance().sg.board[i][j]);
-				SOLUTION.add(GameOptionsViewModel.getInstance().sg.boardSolution[i][j]);
+				CURRENT.add(NewGame.sg.board[i][j]);
+				SOLUTION.add(NewGame.sg.boardSolution[i][j]);
 			}
 
 	}

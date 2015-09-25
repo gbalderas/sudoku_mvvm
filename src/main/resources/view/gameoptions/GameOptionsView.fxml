@@ -24,6 +24,9 @@
 				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Easy" />
 				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Normal" />
 				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Hard" />
+            <CheckMenuItem fx:id="itemEasy" mnemonicParsing="false" onAction="#setDifficultyCheck" text="Easy" />
+            <CheckMenuItem fx:id="itemNormal" mnemonicParsing="false" onAction="#setDifficultyCheck" text="Normal" />
+            <CheckMenuItem fx:id="itemHard" mnemonicParsing="false" onAction="#setDifficultyCheck" text="Hard" />
 			</items>
 		</SplitMenuButton>
 		<Button fx:id="buttonPauseGame" mnemonicParsing="false" onAction="#pauseGame" text="Pause Game" />

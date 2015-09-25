@@ -12,7 +12,8 @@ import view.Dialogs.Dialogs;
 public class SudokuMain_1_1 extends Application {
 
 	public static final String title = "Sudoku mvvmFX";
-	// TODO? Create own sudoku board generator
+	// TODO? Create own Sudoku board generator
+	// FIXME make model independent -> new classes?
 
 	public static void main(String a[]) {
 		launch(a);

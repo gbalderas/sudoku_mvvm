@@ -112,6 +112,7 @@ public class TextFieldViewModel implements ViewModel {
 		return Integer.parseInt(MainViewModel.getInstance().id.get());
 	}
 
+	// id 100 -> default placeholder for starting application
 	public void focusOtherField(KeyCode keyPressed, int id) {
 		if (id == 100)
 			id = getID();

@@ -14,8 +14,8 @@ public class Timer {
 	private Boolean started = false;
 
 	private Timeline timeline;
-	public StringProperty timeCounter = new SimpleStringProperty();
-	public StringProperty pauseString = new SimpleStringProperty();
+	public static StringProperty timeCounter = new SimpleStringProperty();
+	public static StringProperty pauseString = new SimpleStringProperty();
 
 	private int minutes;
 	private double seconds;
@@ -68,11 +68,11 @@ public class Timer {
 	}
 
 	public StringProperty timeCounterProperty() {
-		return this.timeCounter;
+		return timeCounter;
 	}
 
 	public String getTimeCounter() {
-		return this.timeCounterProperty().get();
+		return timeCounterProperty().get();
 	}
 
 }
