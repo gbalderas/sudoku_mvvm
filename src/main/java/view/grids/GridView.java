@@ -10,6 +10,8 @@ import javafx.scene.layout.GridPane;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 
+import model.GameInfo;
+
 public class GridView implements FxmlView<GridViewModel>, Initializable {
 
 	@FXML
@@ -25,7 +27,7 @@ public class GridView implements FxmlView<GridViewModel>, Initializable {
 		int n = 0;
 		for (int x = 0; x < 9; x++)
 			for (int y = 0; y < 9; y++) {
-				gridPane.add(GridViewModel.getInstance().listOfViewTuples.get(n).getView(), y, x);
+				gridPane.add(GameInfo.listOfViewTuples.get(n).getView(), y, x);
 				n++;
 			}
 	}

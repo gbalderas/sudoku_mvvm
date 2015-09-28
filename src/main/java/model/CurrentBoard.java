@@ -16,14 +16,13 @@ public class CurrentBoard {
 
 	public static ArrayList<Integer> CURRENT = new ArrayList<Integer>();
 	public static ArrayList<Integer> SOLUTION = new ArrayList<Integer>();
-	public static int DIFFICULTY = 50;
 
 	public CurrentBoard() {
-		numberFieldsLeft.set(DIFFICULTY);
+		numberFieldsLeft.set(GameInfo.DIFFICULTY);
 		createBoards();
 		printBoards();
 		numberFieldsLeft.addListener((obs, oldV, newV) -> {
-			double value = (DIFFICULTY - newV.doubleValue()) / DIFFICULTY;
+			double value = (GameInfo.DIFFICULTY - newV.doubleValue()) / GameInfo.DIFFICULTY;
 			progress.set(value);
 		});
 	}
@@ -35,9 +34,9 @@ public class CurrentBoard {
 				x--;
 		numberFieldsLeft.setValue(x);
 		if (x == 0) {
-			NewGame.timer.stopTime();
+			Timer.stopTime();
 			System.out.println(
-			        "YOU WON!\nDifficulty: " + DIFFICULTY + "\nFinished in: " + NewGame.timer.getTimeCounter());
+			        "YOU WON!\nDifficulty: " + GameInfo.DIFFICULTY + "\nFinished in: " + Timer.timeCounter.get());
 			Dialogs.playAgainDialog();
 		}
 	}

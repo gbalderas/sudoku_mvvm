@@ -8,23 +8,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-import view.grids.GridViewModel;
 import view.grids.TextFieldViewModel;
 
 public class NewGame {
 
 	public static SudokuGenerator sg;
-	public static Timer timer;
+
 	public static SimpleStringProperty difficultyString = new SimpleStringProperty();
 
 	public static void startNewGame() {
-		timer = new Timer();
 		changeDifficulty();
-		sg = new SudokuGenerator(CurrentBoard.DIFFICULTY);
+		sg = new SudokuGenerator(GameInfo.DIFFICULTY);
 		new CurrentBoard();
-		GridViewModel.getInstance().disabledGrid.set(false);
 		generateFields();
-		startTimer();
+		GameInfo.enableGrid();
+		Timer.resetTime();
 	}
 
 	public static void generateFields() {
@@ -32,9 +30,9 @@ public class NewGame {
 		Label tempL = null;
 
 		for (int i = 0; i < 81; i++) {
-			tempTF = GridViewModel.getInstance().listOfFields.get(i);
-			tempL = GridViewModel.getInstance().listOfLabels.get(i);
-			TextFieldViewModel vm = GridViewModel.getInstance().listOfViewTuples.get(i).getViewModel();
+			tempTF = GameInfo.listOfFields.get(i);
+			tempL = GameInfo.listOfLabels.get(i);
+			TextFieldViewModel vm = GameInfo.listOfViewTuples.get(i).getViewModel();
 			tempTF.textProperty().removeListener(vm.listener);
 			if (CurrentBoard.CURRENT.get(i) != 0) {
 				tempTF.setDisable(true);
@@ -46,7 +44,7 @@ public class NewGame {
 				tempTF.setDisable(false);
 				tempTF.setFont(Font.font(null, FontWeight.NORMAL, 18));
 				tempTF.setText("");
-				tempTF.setStyle("-fx-control-inner-background:#FFFFFF");
+				tempTF.setStyle("-fx-control-inner-background:#FFFFFF; -fx-opacity:1.0");
 				tempL.setVisible(true);
 			}
 			tempTF.textProperty().addListener(vm.listener);
@@ -69,15 +67,6 @@ public class NewGame {
 				num = r.nextInt(58 - 54 + 1) + 54;
 				break;
 		}
-		CurrentBoard.DIFFICULTY = num;
-	}
-
-	public static void startTimer() {
-		timer.resetTime();
-		timer.startTime();
-	}
-
-	public static void stopTimer() {
-		timer.stopTime();
+		GameInfo.DIFFICULTY = num;
 	}
 }

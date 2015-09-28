@@ -2,16 +2,14 @@ package model;
 
 import java.util.ArrayList;
 
-import view.MainViewModel;
-
 public class NumberValidation {
 	private static int ROW;
 	private static int COLUMN;
 
 	public static Boolean validateNumber(int numberToValidate) {
-		COLUMN = Integer.parseInt(MainViewModel.getInstance().column.get());
-		ROW = Integer.parseInt(MainViewModel.getInstance().row.get());
-		int id = Integer.parseInt(MainViewModel.getInstance().id.get());
+		COLUMN = GameInfo.column.get();
+		ROW = GameInfo.row.get();
+		int id = GameInfo.id.get();
 		if (CurrentBoard.CURRENT.get(id) == numberToValidate)
 			return true;
 		if (!isRegionValid(numberToValidate))

@@ -1,6 +1,5 @@
 package view.grids;
 
-import java.util.List;
 import java.util.Vector;
 
 import javafx.beans.property.BooleanProperty;
@@ -14,17 +13,17 @@ import javafx.scene.input.KeyCode;
 import de.saxsys.mvvmfx.ViewModel;
 
 import model.CurrentBoard;
+import model.GameInfo;
 import model.NumberValidation;
-import view.MainViewModel;
 
 public class TextFieldViewModel implements ViewModel {
-	private List<Integer> listOfMarkedNumbers = new Vector<Integer>();
+	private Vector<Integer> listOfMarkedNumbers = new Vector<Integer>();
 
 	public BooleanProperty markedNumbersVisibility = new SimpleBooleanProperty();
 	public StringProperty markedNumbers = new SimpleStringProperty();
 	public StringProperty registeredNumber = new SimpleStringProperty();
 	public StringProperty registeredStyle = new SimpleStringProperty();
-	public BooleanProperty focus = new SimpleBooleanProperty();
+	public BooleanProperty disable = new SimpleBooleanProperty();
 
 	private static TextFieldViewModel INSTANCE;
 
@@ -48,15 +47,14 @@ public class TextFieldViewModel implements ViewModel {
 
 	public void addNumberToMarkedList(int buttonNumber) {
 		// add to marked list
-		if (!listOfMarkedNumbers.contains(buttonNumber)) {
-			listOfMarkedNumbers.add(buttonNumber);
-			listOfMarkedNumbers.sort(null);
+		if (!this.listOfMarkedNumbers.contains(buttonNumber)) {
+			this.listOfMarkedNumbers.add(buttonNumber);
+			this.listOfMarkedNumbers.sort(null);
 		} else // remove from marked list
-			listOfMarkedNumbers.remove(listOfMarkedNumbers.indexOf(buttonNumber));
-
+			this.listOfMarkedNumbers.removeElement(buttonNumber);
 		// show marked list
-		if (!listOfMarkedNumbers.isEmpty())
-			markedNumbers.set(listOfMarkedNumbers.toString());
+		if (!this.listOfMarkedNumbers.isEmpty())
+			markedNumbers.set(this.listOfMarkedNumbers.toString().replaceAll("[\\[\\],]", ""));
 		else // show nothing
 			markedNumbers.set("");
 	}
@@ -109,7 +107,7 @@ public class TextFieldViewModel implements ViewModel {
 
 	// for positioning purposes
 	private int getID() {
-		return Integer.parseInt(MainViewModel.getInstance().id.get());
+		return GameInfo.id.get();
 	}
 
 	// id 100 -> default placeholder for starting application
@@ -135,12 +133,19 @@ public class TextFieldViewModel implements ViewModel {
 				default:
 					return;
 			}
-			TextField textField = GridViewModel.getInstance().listOfFields.get(id);
+			TextField textField = GameInfo.listOfFields.get(id);
 			if (textField.isDisabled())
 				focusOtherField(keyPressed, id);
 			textField.requestFocus();
 		} catch (ArrayIndexOutOfBoundsException e) {
 		} catch (IndexOutOfBoundsException e) {
 		}
+	}
+
+	public void autoFillMarkedItems() {
+		for (int i = 1; i < 10; i++)
+			if (NumberValidation.isNumberValid(i))
+				addNumberToMarkedList(i);
+		System.out.println("Field checked");
 	}
 }

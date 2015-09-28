@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 
-import app.SudokuMain_1_1;
+import app.SudokuMain;
 
 public class MainView implements FxmlView<MainViewModel>, Initializable {
 
@@ -25,7 +25,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		labelTitle.setText(SudokuMain_1_1.title);
+		labelTitle.setText(SudokuMain.title);
 
 		labelRow.textProperty().bindBidirectional(viewModel.row);
 		labelColumn.textProperty().bindBidirectional(viewModel.column);

@@ -8,12 +8,11 @@ import javafx.scene.control.MenuItem;
 import de.saxsys.mvvmfx.ViewModel;
 
 import model.NewGame;
+import model.Timer;
 import view.Dialogs.Dialogs;
 import view.gameoptions.GameOptionsViewModel;
 
 public class MenuViewModel implements ViewModel {
-
-	// TODO add check to selected difficulty level
 
 	public BooleanProperty selected = new SimpleBooleanProperty();
 
@@ -43,7 +42,7 @@ public class MenuViewModel implements ViewModel {
 	}
 
 	public void pauseGame() {
-		NewGame.stopTimer();
+		Timer.stopTime();
 	}
 
 	public void showHowToPlay() {

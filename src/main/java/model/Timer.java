@@ -7,21 +7,18 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 
-import view.grids.GridViewModel;
-
 public class Timer {
 
-	private Boolean started = false;
+	private static Boolean started = false;
 
-	private Timeline timeline;
+	private static Timeline timeline;
 	public static StringProperty timeCounter = new SimpleStringProperty();
-	public static StringProperty pauseString = new SimpleStringProperty();
 
-	private int minutes;
-	private double seconds;
-	private Duration time = Duration.ZERO;
+	private static int minutes;
+	private static double seconds;
+	private static Duration time = Duration.ZERO;
 
-	public void startTime() {
+	public static void startTime() {
 
 		if (!started) {
 			started = true;
@@ -43,36 +40,30 @@ public class Timer {
 		}
 	}
 
-	public void stopTime() {
+	public static void stopTime() {
 		if (started) {
 			// Pause
-			pauseString.set("Continue?");
+			GameInfo.pauseString.set("Continue?");
 			started = false;
-			GridViewModel.getInstance().disableGrid();
+			GameInfo.disableGrid();
 			timeline.stop();
 		} else // Resume
-			if (pauseString.get().equals("Continue?")) {
-				pauseString.set("Pause Game");
+			if (GameInfo.pauseString.get().equals("Continue?")) {
+				GameInfo.pauseString.set("Pause Game");
 				started = true;
-				GridViewModel.getInstance().enableGrid();
+				GameInfo.enableGrid();
 				timeline.play();
 			}
 
 	}
 
-	public void resetTime() {
+	public static void resetTime() {
 		time = Duration.ZERO;
 		minutes = 0;
+		seconds = 0;
 		timeCounter.set(minutes + ":" + time.toMillis());
-		pauseString.set("Pause Game");
-	}
-
-	public StringProperty timeCounterProperty() {
-		return timeCounter;
-	}
-
-	public String getTimeCounter() {
-		return timeCounterProperty().get();
+		GameInfo.pauseString.set("Pause Game");
+		startTime();
 	}
 
 }

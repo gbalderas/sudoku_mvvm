@@ -19,7 +19,7 @@ import javafx.scene.layout.GridPane;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 
-import view.MainViewModel;
+import model.GameInfo;
 
 public class TextFieldView implements FxmlView<TextFieldViewModel>, Initializable {
 
@@ -48,12 +48,13 @@ public class TextFieldView implements FxmlView<TextFieldViewModel>, Initializabl
 		textField.focusedProperty().addListener((ChangeListener<Boolean>) (arg0, oldV, newV) -> {
 			if (newV) {
 				Parent parent = textField.getParent();
-				MainViewModel.getInstance().row.set(GridPane.getRowIndex(parent) + "");
-				MainViewModel.getInstance().column.set(GridPane.getColumnIndex(parent) + "");
+				GameInfo.row.set(GridPane.getRowIndex(parent));
+				GameInfo.column.set(GridPane.getColumnIndex(parent));
 				int id = GridPane.getRowIndex(parent) * 9 + GridPane.getColumnIndex(parent);
-				MainViewModel.getInstance().id.set(id + "");
+				GameInfo.id.set(id);
 			}
 		});
+		textField.disableProperty().bindBidirectional(viewModel.disable);
 	}
 
 	// TEXTFIELD ------
@@ -85,6 +86,11 @@ public class TextFieldView implements FxmlView<TextFieldViewModel>, Initializabl
 	@FXML
 	void clearField() {
 		viewModel.clearField();
+	}
+
+	@FXML
+	void autoFillMarkedItems(ActionEvent event) {
+		viewModel.autoFillMarkedItems();
 	}
 
 }

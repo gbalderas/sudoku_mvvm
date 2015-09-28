@@ -24,13 +24,10 @@
 				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Easy" />
 				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Normal" />
 				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Hard" />
-            <CheckMenuItem fx:id="itemEasy" mnemonicParsing="false" onAction="#setDifficultyCheck" text="Easy" />
-            <CheckMenuItem fx:id="itemNormal" mnemonicParsing="false" onAction="#setDifficultyCheck" text="Normal" />
-            <CheckMenuItem fx:id="itemHard" mnemonicParsing="false" onAction="#setDifficultyCheck" text="Hard" />
 			</items>
 		</SplitMenuButton>
 		<Button fx:id="buttonPauseGame" mnemonicParsing="false" onAction="#pauseGame" text="Pause Game" />
-		<ToggleButton fx:id="toggleShowHint" mnemonicParsing="false" text="Show Hint" />
-		<ToggleButton fx:id="toggleShowSolution" mnemonicParsing="false" text="Show Solution" />
+      <Button mnemonicParsing="false" onAction="#autoMarkFields" text="Auto-MarkFields" />
+      <Button mnemonicParsing="false" onAction="#autoFillRegion" text="Auto-FillRegion" />
 	</children>
 </VBox>

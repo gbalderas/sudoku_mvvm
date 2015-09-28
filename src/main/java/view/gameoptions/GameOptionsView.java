@@ -7,27 +7,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
-import javafx.scene.control.ToggleButton;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-
-import model.Timer;
 
 public class GameOptionsView implements FxmlView<GameOptionsViewModel>, Initializable {
 
 	@FXML
 	private Button buttonPauseGame;
-
-	@FXML
-	private ToggleButton toggleShowHint;
-
-	@FXML
-	private ToggleButton toggleShowSolution;
 
 	@FXML
 	private Button buttonNewGame;
@@ -39,9 +29,6 @@ public class GameOptionsView implements FxmlView<GameOptionsViewModel>, Initiali
 
 	@FXML
 	private SplitMenuButton splitButtonNewGame;
-
-	@FXML
-	private CheckMenuItem itemHard, itemEasy, itemNormal;
 
 	@FXML
 	// start timer
@@ -64,29 +51,23 @@ public class GameOptionsView implements FxmlView<GameOptionsViewModel>, Initiali
 		viewModel.setDifficulty(item.getText());
 	}
 
-	@FXML
-	private void setDifficultyCheck(ActionEvent event) {
-		CheckMenuItem item = (CheckMenuItem) event.getSource();
-		// if(itemEasy.isSelected())
-		viewModel.setDifficultyCheck(item.getText());
-		itemEasy.selectedProperty().set(false);
-		itemNormal.selectedProperty().set(false);
-		itemHard.selectedProperty().set(false);
-		item.selectedProperty().set(true);
-
-	}
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		labelTimer.textProperty().bindBidirectional(viewModel.timerString);
-		labelDifficulty.textProperty().bindBidirectional(viewModel.difficultyString);
-		buttonPauseGame.textProperty().bindBidirectional(Timer.pauseString);
-		itemEasy.selectedProperty().bindBidirectional(viewModel.easySelected);
-		itemNormal.selectedProperty().bindBidirectional(viewModel.normalSelected);
-		itemHard.selectedProperty().bindBidirectional(viewModel.hardSelected);
-		toggleShowHint.setVisible(false);
-		toggleShowSolution.setVisible(false);
+		labelTimer.textProperty().bindBidirectional(viewModel.timer);
+		labelDifficulty.textProperty().bindBidirectional(viewModel.difficulty);
+		buttonPauseGame.textProperty().bindBidirectional(viewModel.paused);
 
 	}
 
+	@FXML
+	void autoMarkFields(ActionEvent event) throws InterruptedException {
+		viewModel.autoMarkFields();
+	}
+
+	// TODO region checker -> register lone number
+
+	@FXML
+	void autoFillRegion() {
+		viewModel.autoFillRegion();
+	}
 }
