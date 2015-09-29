@@ -30,15 +30,12 @@ public class GameInfo {
 
 	public static int DIFFICULTY = 50;
 
-	public static StringProperty timeCounter = new SimpleStringProperty();
-
-	// TODO? move time counter here
-
 	public static void disableGrid() {
 		disabledGrid.set(true);
 		TextFieldViewModel vm;
 		for (int i = 0; i < 81; i++) {
 			vm = GameInfo.listOfViewTuples.get(i).getViewModel();
+			// TODO? code smells
 			vm.registeredStyle.set(vm.registeredStyle.get() + ";-fx-opacity:0.0");
 		}
 	}

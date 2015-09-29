@@ -12,6 +12,7 @@ import view.Dialogs.Dialogs;
 public class SudokuMain extends Application {
 	// FIXME Create own Sudoku board generator using NumberValidation
 	// TODO create Sudoku solver -> testing
+	// TODO? show hints?
 
 	public static final String title = "Sudoku mvvmFX";
 

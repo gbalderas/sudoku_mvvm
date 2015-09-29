@@ -17,8 +17,6 @@ import model.Timer;
 
 public class GameOptionsViewModel implements ViewModel {
 
-	// TODO? show hints?
-
 	public SudokuGenerator sg;
 	public SimpleStringProperty paused = new SimpleStringProperty();
 	public SimpleStringProperty timer = new SimpleStringProperty();
@@ -73,6 +71,7 @@ public class GameOptionsViewModel implements ViewModel {
 	}
 
 	public void autoFillRegion() {
+		// TODO fill whole region
 		Label l[] = new Label[9];
 		l[0] = GameInfo.listOfLabels.get(10 - 10);
 		l[1] = GameInfo.listOfLabels.get(10 - 9);

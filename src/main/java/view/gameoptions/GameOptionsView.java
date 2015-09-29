@@ -64,8 +64,6 @@ public class GameOptionsView implements FxmlView<GameOptionsViewModel>, Initiali
 		viewModel.autoMarkFields();
 	}
 
-	// TODO region checker -> register lone number
-
 	@FXML
 	void autoFillRegion() {
 		viewModel.autoFillRegion();

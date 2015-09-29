@@ -27,18 +27,17 @@ public class CurrentBoard {
 		});
 	}
 
-	public static void compareBoards() {
-		int x = 81;
-		for (int i = 0; i < 81; i++)
-			if (CURRENT.get(i).equals(SOLUTION.get(i)))
-				x--;
-		numberFieldsLeft.setValue(x);
-		if (x == 0) {
-			Timer.stopTime();
-			System.out.println(
-			        "YOU WON!\nDifficulty: " + GameInfo.DIFFICULTY + "\nFinished in: " + Timer.timeCounter.get());
-			Dialogs.playAgainDialog();
-		}
+	public static Boolean isBoardCorrect() {
+		if (numberFieldsLeft.get() == 0)
+			return true;
+		return false;
+	}
+
+	public static void endGame() {
+		Timer.stopTime();
+		System.out
+		        .println("YOU WON!\nDifficulty: " + GameInfo.DIFFICULTY + "\nFinished in: " + Timer.timeCounter.get());
+		Dialogs.playAgainDialog();
 	}
 
 	private void createBoards() {

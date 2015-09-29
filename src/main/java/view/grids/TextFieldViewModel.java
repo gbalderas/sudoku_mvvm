@@ -85,12 +85,14 @@ public class TextFieldViewModel implements ViewModel {
 				CurrentBoard.addToCurrentBoard(getID(), newValue);
 				registeredStyle.set("-fx-background-color:#99CC99");
 				markedNumbersVisibility.set(false);
+				CurrentBoard.numberFieldsLeft.set(CurrentBoard.numberFieldsLeft.get() - 1);
 			} else {
 				// number not valid
 				registeredStyle.set("-fx-background-color:#FF6666");
 				markedNumbersVisibility.set(true);
 			}
-			CurrentBoard.compareBoards();
+			if (CurrentBoard.isBoardCorrect())
+				CurrentBoard.endGame();
 		} catch (NumberFormatException e) {
 			// entered value was not a number
 			resetField();
@@ -99,6 +101,8 @@ public class TextFieldViewModel implements ViewModel {
 	}
 
 	private void resetField() {
+		if (CurrentBoard.CURRENT.get(getID()) != 0)
+			CurrentBoard.numberFieldsLeft.set(CurrentBoard.numberFieldsLeft.get() + 1);
 		CurrentBoard.addToCurrentBoard(getID(), 0);
 		registeredNumber.set("");
 		registeredStyle.set("");
