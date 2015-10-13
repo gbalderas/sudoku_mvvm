@@ -1,13 +1,11 @@
 package app;
 
+import de.saxsys.mvvmfx.FluentViewLoader;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import de.saxsys.mvvmfx.FluentViewLoader;
-
 import view.MainView;
-import view.Dialogs.Dialogs;
+import view.dialogs.Dialogs;
 
 public class SudokuMain extends Application {
 	// FIXME Create own Sudoku board generator using NumberValidation

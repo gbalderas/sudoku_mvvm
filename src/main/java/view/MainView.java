@@ -3,14 +3,12 @@ package view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.SudokuMain;
+import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
-import de.saxsys.mvvmfx.FxmlView;
-import de.saxsys.mvvmfx.InjectViewModel;
-
-import app.SudokuMain;
 
 public class MainView implements FxmlView<MainViewModel>, Initializable {
 

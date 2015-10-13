@@ -6,8 +6,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-
-import view.Dialogs.Dialogs;
+import view.dialogs.Dialogs;
 
 public class CurrentBoard {
 

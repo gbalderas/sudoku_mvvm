@@ -1,13 +1,12 @@
-package view.Dialogs;
+package view.dialogs;
 
 import java.util.Optional;
 
+import app.SudokuMain;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
-
-import app.SudokuMain;
 import model.NewGame;
 import model.Timer;
 

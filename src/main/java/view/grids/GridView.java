@@ -3,13 +3,11 @@ package view.grids;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.GridPane;
-
-import de.saxsys.mvvmfx.FxmlView;
-import de.saxsys.mvvmfx.InjectViewModel;
-
 import model.GameInfo;
 
 public class GridView implements FxmlView<GridViewModel>, Initializable {

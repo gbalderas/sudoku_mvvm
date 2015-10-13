@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import de.saxsys.mvvmfx.ViewModel;
-
 import model.GameInfo;
 import model.NewGame;
 import model.SudokuGenerator;

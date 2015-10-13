@@ -1,13 +1,11 @@
 package view.menu;
 
+import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-
-import de.saxsys.mvvmfx.ViewModel;
-
 import model.CurrentBoard;
 
 public class ProgressViewModel implements ViewModel {

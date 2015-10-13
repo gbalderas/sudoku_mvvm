@@ -1,15 +1,13 @@
 package view.menu;
 
+import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.MenuItem;
-
-import de.saxsys.mvvmfx.ViewModel;
-
 import model.NewGame;
 import model.Timer;
-import view.Dialogs.Dialogs;
+import view.dialogs.Dialogs;
 import view.gameoptions.GameOptionsViewModel;
 
 public class MenuViewModel implements ViewModel {

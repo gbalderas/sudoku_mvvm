@@ -2,15 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import de.saxsys.mvvmfx.ViewTuple;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import de.saxsys.mvvmfx.ViewTuple;
-
 import view.grids.TextFieldView;
 import view.grids.TextFieldViewModel;
 

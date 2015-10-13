@@ -1,12 +1,10 @@
 package view.menu;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
-
-import view.Dialogs.Dialogs;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import view.dialogs.Dialogs;
 
 public class MenuView implements FxmlView<MenuViewModel> {
 

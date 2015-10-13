@@ -1,9 +1,7 @@
 package view;
 
-import javafx.beans.property.SimpleStringProperty;
-
 import de.saxsys.mvvmfx.ViewModel;
-
+import javafx.beans.property.SimpleStringProperty;
 import model.GameInfo;
 
 public class MainViewModel implements ViewModel {

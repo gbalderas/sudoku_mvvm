@@ -2,6 +2,7 @@ package view.grids;
 
 import java.util.Vector;
 
+import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -9,9 +10,6 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-
-import de.saxsys.mvvmfx.ViewModel;
-
 import model.CurrentBoard;
 import model.GameInfo;
 import model.NumberValidation;
@@ -151,5 +149,13 @@ public class TextFieldViewModel implements ViewModel {
 			if (NumberValidation.isNumberValid(i))
 				addNumberToMarkedList(i);
 		System.out.println("Field checked");
+	}
+
+	public void markNumberWithKeyboard(int number) {
+		if (number == 0)
+			clearField();
+		else
+			addNumberToMarkedList(number);
+
 	}
 }

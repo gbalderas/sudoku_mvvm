@@ -3,6 +3,8 @@ package view.grids;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.saxsys.mvvmfx.FxmlView;
+import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,10 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-
-import de.saxsys.mvvmfx.FxmlView;
-import de.saxsys.mvvmfx.InjectViewModel;
-
 import model.GameInfo;
 
 public class TextFieldView implements FxmlView<TextFieldViewModel>, Initializable {
@@ -66,7 +64,12 @@ public class TextFieldView implements FxmlView<TextFieldViewModel>, Initializabl
 	@FXML
 	void keyPressed(KeyEvent event) {
 		KeyCode keyPressed = event.getCode();
-		viewModel.focusOtherField(keyPressed, 100);
+		if (event.isControlDown() && keyPressed.isDigitKey()) {
+			int number = Integer.parseInt(keyPressed.getName());
+			viewModel.markNumberWithKeyboard(number);
+		} else
+			if (keyPressed.isArrowKey())
+				viewModel.focusOtherField(keyPressed, 100);
 	}
 
 	// CONTEXT MENU -----

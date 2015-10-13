@@ -1,13 +1,11 @@
 package view.grids;
 
-import javafx.beans.property.ReadOnlyBooleanWrapper;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-
 import de.saxsys.mvvmfx.FluentViewLoader;
 import de.saxsys.mvvmfx.ViewModel;
 import de.saxsys.mvvmfx.ViewTuple;
-
+import javafx.beans.property.ReadOnlyBooleanWrapper;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import model.GameInfo;
 
 public class GridViewModel implements ViewModel {
