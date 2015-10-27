@@ -1,33 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.gameoptions.GameOptionsView">
-	<children>
-		<Label text="Time">
-			<font>
-				<Font size="16.0" />
-			</font>
-		</Label>
-		<Label fx:id="labelTimer" text="minutes:seconds.millis" />
-      <Label text="Difficulty:">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelDifficulty" text="Normal" />
-		<SplitMenuButton fx:id="splitButtonNewGame" mnemonicParsing="false" onAction="#newGame" popupSide="RIGHT" text="New Game!">
-			<items>
-				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Easy" />
-				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Normal" />
-				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Hard" />
-			</items>
-		</SplitMenuButton>
-		<Button fx:id="buttonPauseGame" mnemonicParsing="false" onAction="#pauseGame" text="Pause Game" />
-      <Button mnemonicParsing="false" onAction="#autoMarkFields" text="Auto-MarkFields" />
-      <Button mnemonicParsing="false" onAction="#autoFillRegion" text="Auto-FillRegion" />
-	</children>
+<VBox xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.gameoptions.GameOptionsView">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+      		<SplitMenuButton fx:id="splitButtonNewGame" mnemonicParsing="false" onAction="#newGame" popupSide="RIGHT" text="New Game!">
+      			<items>
+      				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Easy" />
+      				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Normal" />
+      				<MenuItem mnemonicParsing="false" onAction="#setDifficulty" text="Hard" />
+      			</items>
+      		</SplitMenuButton>
+      		<Button fx:id="buttonPauseGame" mnemonicParsing="false" onAction="#pauseGame" text="Pause Game" />
+            <Button mnemonicParsing="false" onAction="#autoMarkFields" text="Auto-MarkFields" />
+            <Button mnemonicParsing="false" onAction="#autoFillRegion" text="Auto-FillRegion" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" spacing="2.0">
+         <children>
+      		<Label text="Time:">
+      			<font>
+      				<Font size="16.0" />
+      			</font>
+      		</Label>
+      		<Label fx:id="labelTimer" text="minutes:seconds">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label text="Difficulty:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <Label fx:id="labelDifficulty" text="Normal">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+         </children>
+      </HBox>
+   </children>
 </VBox>
