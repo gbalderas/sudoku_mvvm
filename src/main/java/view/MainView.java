@@ -3,7 +3,6 @@ package view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import app.SudokuMain;
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
 import javafx.fxml.FXML;
@@ -13,9 +12,6 @@ import javafx.scene.control.Label;
 public class MainView implements FxmlView<MainViewModel>, Initializable {
 
 	@FXML
-	private Label labelTitle;
-
-	@FXML
 	private Label labelRow, labelColumn, labelID;
 
 	@InjectViewModel
@@ -23,7 +19,6 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		labelTitle.setText(SudokuMain.title);
 
 		labelRow.textProperty().bindBidirectional(viewModel.row);
 		labelColumn.textProperty().bindBidirectional(viewModel.column);
