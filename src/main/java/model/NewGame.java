@@ -25,11 +25,13 @@ public class NewGame {
 	}
 
 	public static void generateFields() {
+		TextField tempTF = null;
+		Label tempL = null;
 		for (int i = 0; i < 81; i++) {
-			TextField tempTF = GameInfo.listOfFields.get(i);
-			Label tempL = GameInfo.listOfLabels.get(i);
+			tempTF = GameInfo.listOfFields.get(i);
+			tempL = GameInfo.listOfLabels.get(i);
 			TextFieldViewModel vm = GameInfo.listOfViewModels.get(i);
-			tempTF.textProperty().removeListener(TextFieldViewModel.getListener());
+			tempTF.textProperty().removeListener(vm.listener);
 			tempTF.setStyle(null);
 			if (CurrentBoard.CURRENT.get(i) != 0) {
 				tempTF.setDisable(true);
@@ -44,7 +46,7 @@ public class NewGame {
 				tempTF.setStyle("-fx-control-inner-background:#FFFFFF");
 				tempL.setVisible(true);
 			}
-			tempTF.textProperty().addListener(TextFieldViewModel.getListener());
+			tempTF.textProperty().addListener(vm.listener);
 			vm.clearListOfMarkedNumbers();
 		}
 	}

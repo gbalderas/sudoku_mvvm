@@ -26,7 +26,7 @@ public class GameInfo {
 	public static void disableGrid() {
 		disabledGrid.set(true);
 		
-		listOfViewModels.forEach(vm ->{
+		listOfViewModels.forEach(vm -> {
 			vm.opacityProperty.set(0);
 		});
 	}
@@ -34,7 +34,7 @@ public class GameInfo {
 	public static void enableGrid() {
 		disabledGrid.set(false);
 		
-		listOfViewModels.forEach(vm ->{
+		listOfViewModels.forEach(vm -> {
 			vm.opacityProperty.set(1);
 		});
 	}

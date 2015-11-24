@@ -2,8 +2,6 @@ package view.grids;
 
 import java.util.Vector;
 
-import javax.imageio.spi.RegisterableService;
-
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -27,23 +25,18 @@ public class TextFieldViewModel implements ViewModel {
 	public SimpleDoubleProperty opacityProperty = new SimpleDoubleProperty();
 	public BooleanProperty disable = new SimpleBooleanProperty();
 
-	private static ChangeListener<String> LISTENER;
 	private static TextFieldViewModel INSTANCE;
 
 	public TextFieldViewModel() {
 		INSTANCE = this;
-		LISTENER = listener;
 	}
 
 	public static TextFieldViewModel getInstance() {
 		return INSTANCE;
 	}
 	
-	public static ChangeListener<String> getListener(){
-		return LISTENER;
-	}
 
-	private ChangeListener<String> listener = (observable, oldValue, newValue) -> {
+	public ChangeListener<String> listener = (observable, oldValue, newValue) -> {
 		if (newValue.isEmpty() || newValue.matches("[1-9]") || newValue.equals(" ")) {
 			if (!newValue.equals(oldValue))
 				registerField();
@@ -88,6 +81,7 @@ public class TextFieldViewModel implements ViewModel {
 			int newValue = Integer.parseInt(registeredNumber.get());
 			// check if number is valid
 			if (NumberValidation.isNumberValid(newValue)) {
+				System.out.println(getID());
 				if (CurrentBoard.CURRENT.get(getID()) == newValue)
 					return;
 				CurrentBoard.addToCurrentBoard(getID(), newValue);
@@ -118,7 +112,7 @@ public class TextFieldViewModel implements ViewModel {
 	}
 
 	// for positioning purposes
-	private int getID() {
+	private static int getID() {
 		return GameInfo.id.get();
 	}
 
