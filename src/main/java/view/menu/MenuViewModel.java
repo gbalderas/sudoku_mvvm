@@ -26,14 +26,7 @@ public class MenuViewModel implements ViewModel {
 		System.exit(0);
 	}
 
-	public void showProgress() {
-		boolean showed = ProgressViewModel.getInstance().pressedProperty.getValue();
-		if (showed == false)
-			ProgressViewModel.getInstance().pressedProperty.setValue(true);
-		else
-			ProgressViewModel.getInstance().pressedProperty.setValue(false);
-	}
-
+	
 	public void changeDifficulty(ActionEvent event) {
 		MenuItem item = (MenuItem) event.getSource();
 		GameOptionsViewModel.getInstance().setDifficulty(item.getText());

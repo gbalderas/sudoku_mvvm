@@ -2,9 +2,12 @@ package view.grids;
 
 import java.util.Vector;
 
+import javax.imageio.spi.RegisterableService;
+
 import de.saxsys.mvvmfx.ViewModel;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -21,19 +24,26 @@ public class TextFieldViewModel implements ViewModel {
 	public StringProperty markedNumbers = new SimpleStringProperty();
 	public StringProperty registeredNumber = new SimpleStringProperty();
 	public StringProperty registeredStyle = new SimpleStringProperty();
+	public SimpleDoubleProperty opacityProperty = new SimpleDoubleProperty();
 	public BooleanProperty disable = new SimpleBooleanProperty();
 
+	private static ChangeListener<String> LISTENER;
 	private static TextFieldViewModel INSTANCE;
 
 	public TextFieldViewModel() {
 		INSTANCE = this;
+		LISTENER = listener;
 	}
 
 	public static TextFieldViewModel getInstance() {
 		return INSTANCE;
 	}
+	
+	public static ChangeListener<String> getListener(){
+		return LISTENER;
+	}
 
-	public ChangeListener<String> listener = (observable, oldValue, newValue) -> {
+	private ChangeListener<String> listener = (observable, oldValue, newValue) -> {
 		if (newValue.isEmpty() || newValue.matches("[1-9]") || newValue.equals(" ")) {
 			if (!newValue.equals(oldValue))
 				registerField();
@@ -42,7 +52,7 @@ public class TextFieldViewModel implements ViewModel {
 	};
 
 	// CONTEXT MENU ---------------------------------------------------------
-
+	
 	public void addNumberToMarkedList(int buttonNumber) {
 		// add to marked list
 		if (!this.listOfMarkedNumbers.contains(buttonNumber)) {

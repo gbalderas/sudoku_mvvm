@@ -12,30 +12,30 @@ public class Timer {
 
 	private static Boolean started = false;
 
-	private static Timeline timeline;
 	public static StringProperty timeCounter = new SimpleStringProperty();
 
 	private static int minutes;
 	private static int seconds;
 	private static Duration time = Duration.ZERO;
 
+	private static Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), t -> {
+		time = time.add(Duration.seconds(1));
+		if (seconds == 59) {
+			time = Duration.ZERO;
+			minutes++;
+		}
+		seconds = (int) time.toSeconds();
+		if (seconds > 9)
+			timeCounter.set(minutes + ":" + seconds);
+		else
+			timeCounter.set(minutes + ":0" + seconds);
+	}));
+
 	public static void startTime() {
 
 		if (!started) {
 			started = true;
 			timeCounter.set("0:00");
-			timeline = new Timeline(new KeyFrame(Duration.seconds(1), t -> {
-				time = time.add(Duration.seconds(1));
-				if (seconds == 59) {
-					time = Duration.ZERO;
-					minutes++;
-				}
-				seconds = (int) time.toSeconds();
-				if (seconds > 9)
-					timeCounter.set(minutes + ":" + seconds);
-				else
-					timeCounter.set(minutes + ":0" + seconds);
-			}));
 			timeline.setCycleCount(Animation.INDEFINITE);
 			timeline.play();
 		}
@@ -47,7 +47,7 @@ public class Timer {
 			GameInfo.pauseString.set("Continue?");
 			started = false;
 			GameInfo.disableGrid();
-			timeline.stop();
+			timeline.pause();
 		} else // Resume
 			if (GameInfo.pauseString.get().equals("Continue?")) {
 				GameInfo.pauseString.set("Pause Game");

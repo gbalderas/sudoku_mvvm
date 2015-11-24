@@ -16,7 +16,7 @@ public class SudokuMain extends Application {
 
 	public static void main(String a[]) {
 		launch(a);
-	}
+	} 
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -25,8 +25,6 @@ public class SudokuMain extends Application {
 		Scene scene = new Scene(FluentViewLoader.fxmlView(MainView.class).load().getView());
 
 		stage.setScene(scene);
-		stage.setMinHeight(700);
-		stage.setMinWidth(700);
 		stage.show();
 
 		Dialogs.showHowToPlayDialog();

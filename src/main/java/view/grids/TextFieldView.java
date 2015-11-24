@@ -41,6 +41,7 @@ public class TextFieldView implements FxmlView<TextFieldViewModel>, Initializabl
 		label.textProperty().bindBidirectional(viewModel.markedNumbers);
 		textField.textProperty().bindBidirectional(viewModel.registeredNumber);
 		textField.styleProperty().bindBidirectional(viewModel.registeredStyle);
+		textField.opacityProperty().bindBidirectional(viewModel.opacityProperty);
 		label.visibleProperty().bindBidirectional(viewModel.markedNumbersVisibility);
 
 		textField.focusedProperty().addListener((ChangeListener<Boolean>) (arg0, oldV, newV) -> {

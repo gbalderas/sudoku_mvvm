@@ -22,11 +22,6 @@ public class MenuView implements FxmlView<MenuViewModel> {
 	}
 
 	@FXML
-	void showProgress() {
-		viewModel.showProgress();
-	}
-
-	@FXML
 	void changeDifficulty(ActionEvent event) {
 		viewModel.changeDifficulty(event);
 	}
